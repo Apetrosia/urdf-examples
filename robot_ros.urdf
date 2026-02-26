@@ -1,0 +1,187 @@
+<robot name="robot" version="1.0">
+  <joint name="rotating_platform_link_joint" type="continuous">
+    <limit effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.15000"/>
+    <parent link="base_link"/>
+    <child link="rotating_platform_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="arm_01_link_joint" type="revolute">
+    <limit lower="-1.57000" upper="1.57000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00196 0.00106 0.02068"/>
+    <parent link="rotating_platform_link"/>
+    <child link="arm_01_link"/>
+    <axis xyz="0.00000 1.00000 0.00000"/>
+  </joint>
+  <joint name="arm_02_link_joint" type="revolute">
+    <limit lower="-1.57000" upper="1.57000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00194 -0.00000 0.54629"/>
+    <parent link="arm_01_link"/>
+    <child link="arm_02_link"/>
+    <axis xyz="0.00000 1.00000 0.00000"/>
+  </joint>
+  <joint name="arm_03_link_joint" type="revolute">
+    <limit lower="-1.57000" upper="1.57000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00002 -0.00106 0.53303"/>
+    <parent link="arm_02_link"/>
+    <child link="arm_03_link"/>
+    <axis xyz="0.00000 1.00000 0.00000"/>
+  </joint>
+  <joint name="claw_01_link_joint" type="revolute">
+    <limit lower="-1.57000" upper="1.57000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.03000 -0.00000 0.54000"/>
+    <parent link="arm_03_link"/>
+    <child link="claw_01_link"/>
+    <axis xyz="0.00000 1.00000 0.00000"/>
+  </joint>
+  <joint name="claw_02_link_joint" type="revolute">
+    <limit lower="-1.57000" upper="1.57000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.03000 -0.00000 0.54000"/>
+    <parent link="arm_03_link"/>
+    <child link="claw_02_link"/>
+    <axis xyz="0.00000 1.00000 0.00000"/>
+  </joint>
+  <link name="base_link">
+    <collision name="foundation.001">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <box size="2.00000 2.00000 0.20000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.50500" ixy="0.00000" ixz="0.00000" iyy="0.50500" iyz="0.00000" izz="1.00000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <mass value="1.50000"/>
+    </inertial>
+    <visual name="foundation">
+      <material name="phobos_inertial"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <box size="2.00000 2.00000 0.20000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="rotating_platform_link">
+    <collision name="rotating_platform.001">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <cylinder radius="0.49971" length="0.10000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.09489" ixy="0.00000" ixz="0.00000" iyy="0.09489" iyz="0.00000" izz="0.18729"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+      <mass value="1.50000"/>
+    </inertial>
+    <visual name="rotating_platform">
+      <material name="phobos_inertial"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <cylinder radius="0.49971" length="0.10000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="arm_01_link">
+    <collision name="arm_01.001">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00196 -0.00106 0.27932"/>
+      <geometry>
+        <box size="0.20000 0.20000 0.60000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.05000" ixy="0.00000" ixz="-0.00000" iyy="0.05000" iyz="0.00000" izz="0.01000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00196 -0.00106 0.27932"/>
+      <mass value="1.50000"/>
+    </inertial>
+    <visual name="arm_01">
+      <material name="phobos_inertial"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00196 -0.00106 0.27932"/>
+      <geometry>
+        <box size="0.20000 0.20000 0.60000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="arm_02_link">
+    <collision name="arm_02.001">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00002 -0.00106 0.28303"/>
+      <geometry>
+        <box size="0.14000 0.14000 0.60000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.04745" ixy="0.00000" ixz="0.00000" iyy="0.04745" iyz="0.00000" izz="0.00490"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00002 -0.00106 0.28303"/>
+      <mass value="1.50000"/>
+    </inertial>
+    <visual name="arm_02">
+      <material name="phobos_inertial"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00002 -0.00106 0.28303"/>
+      <geometry>
+        <box size="0.14000 0.14000 0.60000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="arm_03_link">
+    <collision name="arm_03.001">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 0.25000"/>
+      <geometry>
+        <box size="0.08000 0.08000 0.60000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.04580" ixy="0.00000" ixz="0.00000" iyy="0.04580" iyz="0.00000" izz="0.00160"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 0.25000"/>
+      <mass value="1.50000"/>
+    </inertial>
+    <visual name="arm_03">
+      <material name="phobos_inertial"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 0.25000"/>
+      <geometry>
+        <box size="0.08000 0.08000 0.60000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="claw_01_link">
+    <collision name="claw_01.001">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.01000 0.00000 0.06000"/>
+      <geometry>
+        <box size="0.04401 0.02000 0.14135"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00255" ixy="0.00000" ixz="0.00000" iyy="0.00274" iyz="0.00000" izz="0.00029"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.01000 0.00000 0.06000"/>
+      <mass value="1.50000"/>
+    </inertial>
+    <visual name="claw_01">
+      <material name="phobos_inertial"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.01000 0.00000 0.06000"/>
+      <geometry>
+        <box size="0.04401 0.02000 0.14135"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="claw_02_link">
+    <collision name="claw_02.001">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.01000 -0.00000 0.06000"/>
+      <geometry>
+        <box size="0.04401 0.02000 0.14135"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00255" ixy="0.00000" ixz="0.00000" iyy="0.00274" iyz="0.00000" izz="0.00029"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.01000 -0.00000 0.06000"/>
+      <mass value="1.50000"/>
+    </inertial>
+    <visual name="claw_02">
+      <material name="phobos_inertial"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.01000 -0.00000 0.06000"/>
+      <geometry>
+        <box size="0.04401 0.02000 0.14135"/>
+      </geometry>
+    </visual>
+  </link>
+  <material name="phobos_inertial">
+    <color rgba="0.80000 0.80000 0.80000 1.00000"/>
+  </material>
+</robot>
